@@ -1,0 +1,14 @@
+alerta_id,q1,q2,q3,q4,evidencia,notas
+S1-A-003,yes,yes,no,no,dossiers/S1-A-003.md,
+S1-C-001,yes,yes,no,no,dossiers/S1-C-001.md,
+S1-B-002,yes,yes,no,no,dossiers/S1-B-002.md,
+S1-A-002,yes,yes,no,no,dossiers/S1-A-002.md,
+S5-B-005,yes,yes,no,no,dossiers/S5-B-005.md,
+S5-A-001,yes,yes,no,no,dossiers/S5-A-001.md,
+S5-B-003,yes,no,yes,yes,dossiers/S5-B-003.md,una de las cuentas paga a terceros
+S5-A-003,yes,yes,no,no,dossiers/S5-A-003.md,
+S5-B-006,yes,yes,no,no,dossiers/S5-B-006.md,
+S5-B-009,yes,yes,no,no,dossiers/S5-B-009.md,
+S5-A-006,yes,yes,no,no,dossiers/S5-A-006.md,el ciclo regresa el 92% del valor
+S5-C-007,yes,yes,no,no,dossiers/S5-C-007.md,
+S5-C-005,yes,yes,no,no,dossiers/S5-C-005.md,

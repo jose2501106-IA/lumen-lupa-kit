@@ -1,0 +1,7 @@
+{
+  "aviso": "Datos sintéticos para las pruebas del puente de atestaciones (T7); no describen ningún token real.",
+  "methodology_version": "v0.1-demo",
+  "parametros": {"umbral_b": 2, "umbral_a": 0.5, "nombre": "ñandú", "lista": [3, 1]},
+  "hash_datos": "0d1bc6195d5a9843207d551bbabaf3395d91d1d40cdbe979a71bc65f190217f4",
+  "volumen_reportado": "1000.0000000"
+}

@@ -1,0 +1,695 @@
+{
+  "protocol_version": "1.0",
+  "week": {
+    "from": "2026-09-28",
+    "to": "2026-10-04"
+  },
+  "alert_list_sha256": "b63f43c338c985487fc4d5ea38a11765f61f3f66abbc68100094a1a99bfc1bc2",
+  "seed": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+  "n": 25,
+  "status": "completo",
+  "status_reason": null,
+  "deliverable_1_met": true,
+  "passing_signals": [
+    "S5"
+  ],
+  "signals": {
+    "S1": {
+      "mode": "censo",
+      "population": 10,
+      "reviewed": 10,
+      "counts": {
+        "consistente": 7,
+        "falso_positivo": 2,
+        "indeterminado": 1
+      },
+      "weight_reviewed": "0.2263",
+      "weight_by_label": {
+        "consistente": "0.1344",
+        "falso_positivo": "0.0883",
+        "indeterminado": "0.0036"
+      },
+      "weight_share": {
+        "consistente": "0.593901900133",
+        "falso_positivo": "0.390190013257",
+        "indeterminado": "0.0159080866107"
+      },
+      "max_false_positives": null,
+      "max_indeterminate": null,
+      "false_positive_upper_bound_90": null,
+      "passes": false,
+      "low_confidence": true,
+      "reasons": [
+        "false positives hold 39.02% of the reviewed weight (at most 20%)"
+      ],
+      "agreement": {
+        "double_reviewed": 4,
+        "matches": 4,
+        "share": "1",
+        "kappa": null
+      }
+    },
+    "S5": {
+      "mode": "muestra",
+      "population": 40,
+      "reviewed": 25,
+      "counts": {
+        "consistente": 18,
+        "falso_positivo": 3,
+        "indeterminado": 4
+      },
+      "weight_reviewed": null,
+      "weight_by_label": null,
+      "weight_share": null,
+      "max_false_positives": 4,
+      "max_indeterminate": 8,
+      "false_positive_upper_bound_90": "0.248018307995",
+      "passes": true,
+      "low_confidence": false,
+      "reasons": [],
+      "agreement": {
+        "double_reviewed": 9,
+        "matches": 8,
+        "share": "0.888888888889",
+        "kappa": "0.625"
+      }
+    }
+  },
+  "signals_without_alerts": [],
+  "agreement": {
+    "double_reviewed": 13,
+    "matches": 12,
+    "share": "0.923076923077",
+    "kappa": "0.638888888889",
+    "threshold": "0.7",
+    "second_reviewer_answers": true,
+    "every_reviewed_alert_double": false,
+    "note": "We report agreement on the label (share of matches and Cohen's kappa), computed on the answers as first given, before any disagreement is settled."
+  },
+  "disagreements": [
+    {
+      "id": "S5-A-006",
+      "signal": "S5",
+      "questions": [
+        "q2"
+      ],
+      "first_label": "indeterminado",
+      "second_label": "consistente",
+      "settled_label": "consistente",
+      "resolution": "Q2 yes: the dossier shows 92% of the value returning to the entity where the cycle started, above the 90% bar."
+    },
+    {
+      "id": "S5-B-003",
+      "signal": "S5",
+      "questions": [
+        "q4"
+      ],
+      "first_label": "falso_positivo",
+      "second_label": "falso_positivo",
+      "settled_label": "falso_positivo",
+      "resolution": "Q4 no: the payments to third parties have no public label or document, and Q4 needs one."
+    }
+  ],
+  "alerts": [
+    {
+      "id": "S1-A-002",
+      "signal": "S1",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S1-B-001",
+      "signal": "S1",
+      "first": {
+        "q1": "no",
+        "q2": "no",
+        "q3": "no",
+        "q4": "no",
+        "label": "falso_positivo"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "falso_positivo"
+    },
+    {
+      "id": "S1-C-001",
+      "signal": "S1",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S1-A-001",
+      "signal": "S1",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S1-B-002",
+      "signal": "S1",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S1-C-003",
+      "signal": "S1",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S1-A-003",
+      "signal": "S1",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S1-B-003",
+      "signal": "S1",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S1-A-004",
+      "signal": "S1",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "yes",
+        "label": "falso_positivo"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "falso_positivo"
+    },
+    {
+      "id": "S1-C-002",
+      "signal": "S1",
+      "first": {
+        "q1": "unclear",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "indeterminado"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "indeterminado"
+    },
+    {
+      "id": "S5-C-008",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S5-B-001",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S5-C-011",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "yes",
+        "q4": "no",
+        "label": "falso_positivo"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "falso_positivo"
+    },
+    {
+      "id": "S5-B-005",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S5-C-001",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S5-B-012",
+      "signal": "S5",
+      "first": {
+        "q1": "unclear",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "indeterminado"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "indeterminado"
+    },
+    {
+      "id": "S5-A-014",
+      "signal": "S5",
+      "first": {
+        "q1": "no",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "falso_positivo"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "falso_positivo"
+    },
+    {
+      "id": "S5-A-011",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S5-A-008",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "no",
+        "q3": "no",
+        "q4": "no",
+        "label": "indeterminado"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "indeterminado"
+    },
+    {
+      "id": "S5-C-005",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S5-C-007",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S5-A-001",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S5-C-003",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S5-A-003",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S5-A-005",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S5-A-006",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "no",
+        "q3": "no",
+        "q4": "no",
+        "label": "indeterminado"
+      },
+      "second": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "settled": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S5-B-003",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "no",
+        "q3": "yes",
+        "q4": "no",
+        "label": "falso_positivo"
+      },
+      "second": {
+        "q1": "yes",
+        "q2": "no",
+        "q3": "yes",
+        "q4": "yes",
+        "label": "falso_positivo"
+      },
+      "settled": {
+        "q1": "yes",
+        "q2": "no",
+        "q3": "yes",
+        "q4": "no",
+        "label": "falso_positivo"
+      },
+      "scored_label": "falso_positivo"
+    },
+    {
+      "id": "S5-B-006",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S5-B-009",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S5-C-013",
+      "signal": "S5",
+      "first": {
+        "q1": "unclear",
+        "q2": "no",
+        "q3": "no",
+        "q4": "no",
+        "label": "indeterminado"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "indeterminado"
+    },
+    {
+      "id": "S5-A-009",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S5-A-013",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S5-C-006",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "consistente"
+    },
+    {
+      "id": "S5-B-008",
+      "signal": "S5",
+      "first": {
+        "q1": "unclear",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "indeterminado"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "indeterminado"
+    },
+    {
+      "id": "S5-C-009",
+      "signal": "S5",
+      "first": {
+        "q1": "yes",
+        "q2": "yes",
+        "q3": "no",
+        "q4": "no",
+        "label": "consistente"
+      },
+      "second": null,
+      "settled": null,
+      "scored_label": "consistente"
+    }
+  ]
+}

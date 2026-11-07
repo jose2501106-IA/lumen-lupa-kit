@@ -1,0 +1,36 @@
+alerta_id,q1,q2,q3,q4,evidencia,notas
+S1-A-002,yes,yes,no,no,dossiers/S1-A-002.md,
+S1-B-001,no,no,no,no,dossiers/S1-B-001.md,la fuente de fondeo es un servicio con etiqueta pública
+S1-C-001,yes,yes,no,no,dossiers/S1-C-001.md,
+S1-A-001,sí,sí,no,no,dossiers/S1-A-001.md,
+S1-B-002,yes,yes,no,no,dossiers/S1-B-002.md,
+S1-C-003,yes,yes,no,no,dossiers/S1-C-003.md,
+S1-A-003,yes,yes,no,no,dossiers/S1-A-003.md,
+S1-B-003,Yes,Yes,No,No,dossiers/S1-B-003.md,
+S1-A-004,yes,yes,no,yes,dossiers/S1-A-004.md,rol documentado de creador de mercado con contrapartes externas
+S1-C-002,incierto,sí,no,no,dossiers/S1-C-002.md,"dos cuentas, sin fuente común clara"
+S5-C-008,yes,yes,no,no,dossiers/S5-C-008.md,
+S5-B-001,yes,yes,no,no,dossiers/S5-B-001.md,
+S5-C-011,yes,yes,yes,no,dossiers/S5-C-011.md,más de la mitad del volumen con cuentas de fuera
+S5-B-005,yes,yes,no,no,dossiers/S5-B-005.md,
+S5-C-001,yes,yes,no,no,dossiers/S5-C-001.md,
+S5-B-012,unclear,yes,no,no,dossiers/S5-B-012.md,
+S5-A-014,no,yes,no,no,dossiers/S5-A-014.md,sin fuente común: el origen es un exchange
+S5-A-011,yes,yes,no,no,dossiers/S5-A-011.md,
+S5-A-008,yes,no,no,no,dossiers/S5-A-008.md,el ciclo regresa menos del 90% del valor
+S5-C-005,yes,yes,no,no,dossiers/S5-C-005.md,
+S5-C-007,yes,yes,no,no,dossiers/S5-C-007.md,
+S5-A-001,yes,yes,no,no,dossiers/S5-A-001.md,
+S5-C-003,yes,yes,no,no,dossiers/S5-C-003.md,
+S5-A-003,yes,yes,no,no,dossiers/S5-A-003.md,
+S5-A-005,yes,yes,no,no,dossiers/S5-A-005.md,
+S5-A-006,yes,no,no,no,dossiers/S5-A-006.md,
+S5-B-003,yes,no,yes,no,dossiers/S5-B-003.md,contrapartes externas en la mayor parte del volumen
+S5-B-006,yes,yes,no,no,dossiers/S5-B-006.md,
+S5-B-009,si,si,no,no,dossiers/S5-B-009.md,
+S5-C-013,unclear,no,no,no,dossiers/S5-C-013.md,
+S5-A-009,yes,yes,no,no,dossiers/S5-A-009.md,
+S5-A-013,yes,yes,no,no,dossiers/S5-A-013.md,
+S5-C-006,yes,yes,no,no,dossiers/S5-C-006.md,
+S5-B-008,incierto,sí,no,no,dossiers/S5-B-008.md,
+S5-C-009,yes,yes,no,no,dossiers/S5-C-009.md,

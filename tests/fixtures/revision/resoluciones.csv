@@ -1,0 +1,3 @@
+alerta_id,q1,q2,q3,q4,resolucion
+S5-A-006,yes,yes,no,no,"Q2 yes: the dossier shows 92% of the value returning to the entity where the cycle started, above the 90% bar."
+S5-B-003,yes,no,yes,no,"Q4 no: the payments to third parties have no public label or document, and Q4 needs one."

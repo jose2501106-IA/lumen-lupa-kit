@@ -1,0 +1,41 @@
+{
+  "methodology_version": "v0.1-demo",
+  "parametros": {
+    "ARBITRAJE_GANANCIA_MIN_RELATIVA": "0",
+    "ARBITRAJE_MIN_SALTOS": 2,
+    "CONFIANZA_CONCENTRACION_ALTA": "0.50",
+    "CONFIANZA_CONCENTRACION_BAJA": "0.80",
+    "CONFIANZA_MIN_DIAS_ALTA": 14,
+    "CONFIANZA_MIN_TRADES_ALTA": 1000,
+    "CONFIANZA_TOP_K_ENTIDADES": 5,
+    "DATOS_MIN_DIAS": 7,
+    "DATOS_MIN_TRADES": 100,
+    "ENTIDADES_MAX_CUENTAS_POR_ORIGEN": 20,
+    "ETIQUETAS_QUE_NO_UNEN": [
+      "anchor",
+      "exchange",
+      "wallet"
+    ],
+    "S1_COINCIDENCIA_MAX_LEDGERS": 2,
+    "S1_GANANCIA_MAX_RELATIVA": "0",
+    "S1_PERDIDA_MAX_RELATIVA": "0.02",
+    "S1_TOLERANCIA_POSICION_NETA": "0.05",
+    "S1_VENTANA_LEDGERS": 720,
+    "S5_LONGITUD_MAX": 4,
+    "S5_MARGEN_MARCADO_LEDGERS": 0,
+    "S5_VENTANA_LEDGERS": 720
+  },
+  "hash_datos": {
+    "algoritmo": "sha256",
+    "valor": "fe7603c55137b3e5454af9dcc5ff98e16ce7236a0c46b0b41c927b7216a239c7",
+    "forma": "filas de swaps, fundings, transfers, holders, orders y labels, canónicas y ordenadas",
+    "filas": {
+      "swaps": 190,
+      "fundings": 89,
+      "transfers": 18,
+      "holders": 7,
+      "orders": 15,
+      "labels": 6
+    }
+  }
+}

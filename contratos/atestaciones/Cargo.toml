@@ -1,0 +1,32 @@
+[package]
+name = "lumen-lupa-atestaciones"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "Registro de atestaciones de reportes de Lumen Lupa, solo por hash (D-16)."
+rust-version = "1.91"
+
+[lib]
+crate-type = ["lib", "cdylib"]
+doctest = false
+
+[dependencies]
+soroban-sdk = "=29.0.1"
+
+[dev-dependencies]
+soroban-sdk = { version = "=29.0.1", features = ["testutils"] }
+
+# Perfil de la guía oficial "Hello World" de Stellar (tamaño mínimo del WASM; el límite de la red es 128 KB).
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = 0
+strip = "symbols"
+debug-assertions = false
+panic = "abort"
+codegen-units = 1
+lto = true
+
+[profile.release-with-logs]
+inherits = "release"
+debug-assertions = true

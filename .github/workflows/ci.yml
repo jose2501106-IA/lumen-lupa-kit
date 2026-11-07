@@ -1,0 +1,86 @@
+# Integración continua de lumen-lupa-kit: ruff (lint y formato) y pytest, sin red ni credenciales.
+# Las pruebas `live` (BigQuery) no corren aquí: necesitan credenciales propias y se corren a mano.
+# El job del contrato de atestaciones viene del workflow contrato.yml del proyecto.
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: astral-sh/setup-uv@v7
+        with:
+          version: "0.8.17"
+      - name: Instalar dependencias desde uv.lock
+        run: uv sync --locked
+      - name: Lint (ruff check)
+        run: uv run ruff check
+      - name: Formato (ruff format --check)
+        run: uv run ruff format --check
+      - name: Pruebas (pytest, sin red)
+        run: uv run pytest -q
+
+  atestaciones:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      RUST_FIJO: "1.97.0"
+      CARGO_TERM_COLOR: never
+      SOROBAN_SDK_BUILD_SYSTEM_SUPPORTS_SPEC_SHAKING_V2: "1"
+      WASM_RELATIVO: contratos/atestaciones/target/wasm32v1-none/release/lumen_lupa_atestaciones.wasm
+    steps:
+      - uses: actions/checkout@v6
+      - name: Instalar Rust y el target wasm32v1-none (rustup)
+        run: |
+          rustup toolchain install "$RUST_FIJO" --profile minimal --target wasm32v1-none
+          rustup default "$RUST_FIJO"
+          rustc --version
+          cargo --version
+      - name: Pruebas del contrato (cargo test)
+        working-directory: contratos/atestaciones
+        run: cargo test --locked
+      - name: Compilar el WASM (cargo build --release --target wasm32v1-none)
+        working-directory: contratos/atestaciones
+        run: |
+          # Igual que stellar-cli: quita del binario la ruta local del registro de cargo.
+          export CARGO_BUILD_RUSTFLAGS="--remap-path-prefix=${CARGO_HOME:-$HOME/.cargo}/registry/src="
+          cargo build --locked --release --target wasm32v1-none
+      - name: sha256 del WASM
+        run: |
+          SHA=$(sha256sum "$WASM_RELATIVO" | cut -d' ' -f1)
+          BYTES=$(stat -c %s "$WASM_RELATIVO")
+          echo "sha256 del WASM (cargo build): $SHA ($BYTES bytes, $(rustc --version))"
+          {
+            echo "### WASM del contrato de atestaciones (cargo build)"
+            echo
+            echo "- sha256: \`$SHA\`"
+            echo "- tamaño: $BYTES bytes"
+            echo "- $(rustc --version), soroban-sdk 29.0.1, target wasm32v1-none"
+            echo "- Es la compilación de cargo, sin el post-proceso de stellar-cli; el WASM que se"
+            echo "  despliega lo arma \`stellar contract build\` y tiene otro sha256 (README del contrato)."
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Interfaz y spec del WASM compilado (tests/wasm.rs)
+        working-directory: contratos/atestaciones
+        run: |
+          WASM_ATESTACIONES="$GITHUB_WORKSPACE/$WASM_RELATIVO" \
+            cargo test --locked --test wasm -- --ignored --nocapture
+      - name: Reproducibilidad (otra ruta y otro CARGO_HOME, mismo sha256)
+        run: |
+          COPIA="$RUNNER_TEMP/copia/otra-ruta/lumen-lupa"
+          mkdir -p "$COPIA"
+          git archive HEAD | tar -x -C "$COPIA"
+          export CARGO_HOME="$RUNNER_TEMP/cargo-otro"
+          export CARGO_BUILD_RUSTFLAGS="--remap-path-prefix=$CARGO_HOME/registry/src="
+          cargo build --locked --release --target wasm32v1-none \
+            --manifest-path "$COPIA/contratos/atestaciones/Cargo.toml"
+          A=$(sha256sum "$WASM_RELATIVO" | cut -d' ' -f1)
+          B=$(sha256sum "$COPIA/$WASM_RELATIVO" | cut -d' ' -f1)
+          echo "original: $A"
+          echo "copia:    $B"
+          test "$A" = "$B"

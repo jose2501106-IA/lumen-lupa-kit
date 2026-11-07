@@ -1,0 +1,21 @@
+# Credenciales y entorno: nunca se versionan
+.env
+.env.*
+*.secret
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Datos descargados, resultados y bases locales
+data/
+salidas/
+*.duckdb
+*.parquet
+*.jsonl
+# Excepción: los fixtures de las pruebas sí se versionan
+!tests/fixtures/stellar/*.jsonl
+
+# Artefactos de compilación y de pruebas del contrato de atestaciones
+contratos/**/target/
+contratos/**/test_snapshots/
