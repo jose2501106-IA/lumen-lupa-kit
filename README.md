@@ -1,23 +1,59 @@
 # Lumen Lupa Kit
 
+[![CI](https://github.com/jose2501106-IA/lumen-lupa-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/jose2501106-IA/lumen-lupa-kit/actions/workflows/ci.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+
+Lumen Lupa compares the trading volume a Stellar token reports with the volume that survives wash-trading and
+sybil checks. This kit is its open part: a normalized data model (7 DuckDB tables), a Stellar adapter
+(Hubble on BigQuery → DuckDB) with a cost-capped query runner, a wash-trading simulator with labeled ground truth
+(10 scenarios, 3 of them traps that must not raise alerts) and `lumen_lupa.revision`, the
+tool that runs the pre-registered real-data review protocol.
+
+## Why it matters for Stellar
+
+Reported volume and trader counts feed decisions on Stellar that are hard to undo or that pay out:
+
+- **Blend pools:** the creator of a Blend pool chooses its oracle, and the oracle cannot be changed after the
+  pool is created.
+- **Soroban oracle guardrails:** newer guardrails (the [safe-oracle](https://docs.rs/crate/safe-oracle/latest) crate,
+  2026) check SDEX volume and unique-trader counts. One owner with several accounts can meet both.
+- **SCF Integration Track:** SCF may disregard self-generated or wash activity.
+
+## Verify in 5 minutes
+
+You need Python 3.12 and [uv](https://docs.astral.sh/uv/).
+
+```bash
+git clone https://github.com/jose2501106-IA/lumen-lupa-kit
+cd lumen-lupa-kit
+uv sync --locked
+uv run ruff check && uv run ruff format --check
+uv run pytest -q
+uv run python -m lumen_lupa.revision huella --alertas tests/fixtures/revision/alertas.json
+```
+
+No network and no credentials: the tests sign nothing and send nothing. CI runs the same checks on every push.
+
+- [EVIDENCE.md](EVIDENCE.md): what this kit shows and how to check it.
+- [REVIEW_PROTOCOL.md](REVIEW_PROTOCOL.md): how a detector's alerts are reviewed by hand with real Stellar data,
+  fixed before seeing results.
+- [SECURITY.md](SECURITY.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## What is private
+
+The detector (entity grouping, signals, scoring), its thresholds and the data of the markets the project studies
+are not in this kit. The review team can request read access to the private repository.
+
+Code, docs and messages are in Spanish; the full Spanish documentation follows. License: Apache-2.0.
+
+---
+
+# En español
+
 Kit abierto de Lumen Lupa para medir cuánto del volumen de un token en Stellar es actividad orgánica: el modelo
 normalizado de 7 tablas, el adaptador de Stellar (Hubble en BigQuery → DuckDB) con un ejecutor de
 consultas con topes de costo, un simulador de *wash trading* con verdad etiquetada para medir detectores y la
 herramienta pública del protocolo de revisión con datos reales.
-
-> **In English.** Lumen Lupa Kit is the open part of Lumen Lupa, a project that compares the trading volume a
-> Stellar token reports with the volume that survives wash-trading and sybil checks. It ships a normalized data
-> model (7 DuckDB tables) built for Stellar market data, a Stellar adapter that turns Hubble (BigQuery)
-> exports into that model, a BigQuery runner with cost caps (dry run first; refuses queries above
-> 10 GiB unless you pass `--aprobado`; `maximum_bytes_billed` of 20 GiB; a row
-> cap), and a wash-trading simulator with labeled ground truth (10 scenarios, 3 of them
-> traps that must not raise alerts). It also ships `lumen_lupa.revision`, the public tool that runs the
-> pre-registered real-data review protocol in [`REVIEW_PROTOCOL.md`](REVIEW_PROTOCOL.md): the hash of the frozen
-> alert list, the seeded draw by weight, the rubric and the pass rule. It is for Stellar builders, analysts and
-> anyone building or evaluating a wash-trading detector; the detector itself is not included. Install with
-> `uv sync --locked` (Python 3.12) and run `uv run pytest -q`: no network or credentials needed. Code, docs
-> and messages are in Spanish. Contributions are welcome as issues or small pull requests with tests. License:
-> Apache-2.0.
 
 ## Qué es
 
@@ -34,7 +70,8 @@ Lumen Lupa compara el volumen que reporta un token en Stellar contra el volumen 
 | Contrato de atestaciones | `contratos/atestaciones/` | Contrato Soroban que registra reportes solo por hash: sin nombres, cuentas ni cifras |
 
 El detector (entidades, señales, puntaje y umbrales) no está en el kit, ni los datos de los mercados que estudia
-el proyecto. El kit solo lee la red: nada firma ni envía transacciones.
+el proyecto. Las pruebas no usan la red: nada en ellas firma ni envía transacciones.
+Lo único que firma y envía transacciones es `scripts/atestaciones.sh desplegar` y `publicar`: los corre a mano el dueño del contrato, con su propia identidad del CLI de Stellar (el script nunca lee ni pide una llave).
 
 ## Para quién
 

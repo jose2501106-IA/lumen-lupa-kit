@@ -4,7 +4,7 @@
 Toda consulta a Hubble pasa por aquí. SIEMPRE:
   1. hace *dry run* e imprime los bytes que procesaría,
   2. se niega a ejecutar si el dry run pasa de 10 GiB sin la bandera --aprobado
-     (el "sí" de José; ver CLAUDE.md > Reglas duras > Costo),
+     (el "sí" explícito de quien paga las consultas),
   3. ejecuta con maximum_bytes_billed = 20 GiB (BigQuery aborta si se pasa),
   4. consulta job.result().total_rows ANTES de iterar y aborta sin escribir filas si
      pasa de --max-filas (por defecto 200,000): un resultado enorme no debe caber en RAM.
@@ -14,7 +14,7 @@ Toda consulta a Hubble pasa por aquí. SIEMPRE:
 
 Parámetros de consulta (escalares y arreglos, p. ej. `UNNEST(@cuentas)`): van en un JSON
 NO versionado que se pasa con --parametros. Así las listas de cuentas NUNCA se escriben en un
-.sql ni en otro archivo versionado (CLAUDE.md > Reglas duras). El registro guarda cuántos valores
+.sql ni en otro archivo versionado. El registro guarda cuántos valores
 tenía cada parámetro, NO los valores.
 
 La carpeta de salida se deriva del .sql: queries/<carpeta>/x.sql escribe sus filas en
@@ -53,7 +53,7 @@ TOPE_FACTURADO_GIB = 20
 LIMITE_DRY_RUN = LIMITE_DRY_RUN_GIB * GIB
 TOPE_FACTURADO = TOPE_FACTURADO_GIB * GIB
 MAX_FILAS_DEF = 200_000
-PROYECTO = "lumen-lupa"  # CLAUDE.md > Recursos
+PROYECTO = "lumen-lupa"  # cámbialo por el ID de tu proyecto de Google Cloud
 
 RAIZ = Path(__file__).resolve().parent.parent
 DIR_DATOS = RAIZ / "data" / "semana1"

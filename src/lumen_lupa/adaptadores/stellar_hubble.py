@@ -28,7 +28,7 @@ from lumen_lupa.modelo import Funding, Holders, Label, Order, Swap, Transfer, in
 CHAIN = "stellar"
 STROOP = Decimal("0.0000001")  # 7 decimales: la unidad mínima de Stellar
 
-# Ventana del estudio (D-15, CLAUDE.md > Recursos): fechas fijas, UTC.
+# Ventana del estudio (D-15): fechas fijas, UTC. Ajústala para tus datos.
 VENTANA_DESDE = dt.date(2026, 9, 21)
 VENTANA_HASTA = dt.date(2026, 10, 4)
 
