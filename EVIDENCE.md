@@ -52,6 +52,36 @@ get read access to it on request.
 that the detector does what the simulator encodes and catch regressions. Quality on real data is measured in the
 sprint, with the review fixed in advance in `REVIEW_PROTOCOL.md`.
 
+## Prototype live on Stellar testnet (November 9, 2026)
+
+The registry prototype in `contratos/atestaciones/` is deployed on Stellar testnet. The builder deployed it and
+published one attestation with his own Stellar CLI identity; no key passed through AI tooling.
+
+| What | Value |
+| --- | --- |
+| Contract | [`CDZONYTTJI663VERNL4O44XJSGHUGGWL5GARMOFJZFWJ5PC4GFGEML7R`](https://stellar.expert/explorer/testnet/contract/CDZONYTTJI663VERNL4O44XJSGHUGGWL5GARMOFJZFWJ5PC4GFGEML7R) |
+| Deployed WASM | sha256 `ae2625bebe82bf916b958f690d4da6146234e1483e40b9fc91442f3d5091bc29`, 7,743 bytes, built from this repository's `contratos/atestaciones/` with `stellar contract build` (stellar-cli 30.0.1, Rust 1.97.0). `stellar contract fetch` returns a file with the same sha256 |
+| Admin | `GA5RLAREUE7XHTLPJ7I5TQD2T2PUJZN4T36QFTWOUOJKIWTIUYFXQGSM`, the builder's testnet account |
+| Attestation | Transaction [`c43a0310…b215d`](https://stellar.expert/explorer/testnet/tx/c43a0310cb4987c38990421d4624802a23e4d292fa57a1c4523dd3cb2b9b215d), published on November 10, 2026 at 01:43:52 UTC |
+| Attested report | A synthetic demo report from the private detector, run on the labeled simulator (seed 2026); not a market report. `hash_reporte` `88c6cfc7ebcb92b8613f28eca3c5e40d12f8d6318d9694fade7d1f3601478ff8` |
+
+Check it without signing or paying anything (stellar-cli 30.0.1, from the root of this repository; `--fuente` is
+any existing testnet account, used only to simulate the call):
+
+```bash
+stellar contract fetch --id CDZONYTTJI663VERNL4O44XJSGHUGGWL5GARMOFJZFWJ5PC4GFGEML7R --network testnet --out-file /tmp/atestaciones.wasm
+sha256sum /tmp/atestaciones.wasm   # on macOS: shasum -a 256
+scripts/atestaciones.sh --fuente GA5RLAREUE7XHTLPJ7I5TQD2T2PUJZN4T36QFTWOUOJKIWTIUYFXQGSM consultar testnet \
+  CDZONYTTJI663VERNL4O44XJSGHUGGWL5GARMOFJZFWJ5PC4GFGEML7R 88c6cfc7ebcb92b8613f28eca3c5e40d12f8d6318d9694fade7d1f3601478ff8
+```
+
+The second command prints `ae2625be…bc29`. `consultar` returns the attestation with `"revocada":false` and the
+admin as `publicador`.
+
+Caveats: the attested report is synthetic. Stellar testnet resets on December 16, 2026 at 17:00 UTC, and the reset
+erases this deployment. Registry v1 and the attestation of market-integrity report #1 are sprint work, deployed
+after that reset.
+
 ## What the Instaward sprint adds
 
 Calibration on real Stellar data, reviewed exactly as `REVIEW_PROTOCOL.md` says (its frozen hashes and its seed go
